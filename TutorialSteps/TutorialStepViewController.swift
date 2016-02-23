@@ -1,6 +1,6 @@
 import UIKit
 
-class TutorialStepViewController: UIViewController {
+class TutorialStepViewController: BaseViewController {
     
     @IBOutlet private weak var backgroundImageView: UIImageView!
     @IBOutlet private weak var iconImageView: UIImageView!

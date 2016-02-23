@@ -1,21 +1,23 @@
 import UIKit
 
 class TutorialViewController: UIViewController {
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    var pages = [TutorialStepViewController]()
+    var pages = [BaseViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.pagingEnabled = true
+        scrollView.bounces = false
         
-        let page1 = createAndAddTutorialStep("bg_1", iconImageName: "icon_1", text: "PetShare is a pet photo sharing community.")
-        let page2 = createAndAddTutorialStep("bg_2", iconImageName: "icon_2", text: "Take pictures of your pet, and add filters or clipart to help them shine.")
-        let page3 = createAndAddTutorialStep("bg_3", iconImageName: "icon_3", text: "Share your photos via Facebook, email, Twitter, or instant message.")
-        let page4 = createAndAddTutorialStep("bg_4", iconImageName: "icon_4", text: "Rate other photos, give hearts, and follow pets you adore!")
-        let page5 = createAndAddTutorialStep("bg_5", iconImageName: "icon_5", text: "Set up a profile for your pet, show past photos, and let fans follow.")
+        let page1 = createAndAddTutorialStep(0, backgroundImageName: "bg_1", iconImageName: "icon_1", text: "PetShare is a pet photo sharing community.")
+        let page2 = createAndAddTutorialStep(1, backgroundImageName: "bg_2", iconImageName: "icon_2", text: "Take pictures of your pet, and add filters or clipart to help them shine.")
+        let page3 = createAndAddTutorialStep(2, backgroundImageName: "bg_3", iconImageName: "icon_3", text: "Share your photos via Facebook, email, Twitter, or instant message.")
+        let page4 = createAndAddTutorialStep(3, backgroundImageName: "bg_4", iconImageName: "icon_4", text: "Rate other photos, give hearts, and follow pets you adore!")
+        let page5 = createAndAddTutorialStep(4, backgroundImageName: "bg_5", iconImageName: "icon_5", text: "Set up a profile for your pet, show past photos, and let fans follow.")
         
         pages = [page1, page2, page3, page4, page5]
         
@@ -48,7 +50,20 @@ class TutorialViewController: UIViewController {
             }, completion: nil)
     }
     
-    private func createAndAddTutorialStep(backgroundImageName: String, iconImageName: String, text: String) -> TutorialStepViewController {
+    private func createAndAddTutorialStep(pageIndex: Int, backgroundImageName: String, iconImageName: String, text: String) -> BaseViewController {
+        
+        if pageIndex == 1 {
+            let secondPage = storyboard!.instantiateViewControllerWithIdentifier("SecondViewController") as! SecondViewController
+            secondPage.view.translatesAutoresizingMaskIntoConstraints = false
+            
+            scrollView.addSubview(secondPage.view)
+            
+            addChildViewController(secondPage)
+            secondPage.didMoveToParentViewController(self)
+            
+            return secondPage
+        }
+        
         let tutorialStep = storyboard!.instantiateViewControllerWithIdentifier("TutorialStepViewController") as! TutorialStepViewController
         tutorialStep.view.translatesAutoresizingMaskIntoConstraints = false
         tutorialStep.backgroundImage = UIImage(named: backgroundImageName)
@@ -70,5 +85,6 @@ extension TutorialViewController: UIScrollViewDelegate {
         let pageFraction = scrollView.contentOffset.x / pageWidth
         
         pageControl.currentPage = Int(round(pageFraction))
+        print("contentWidth: \(pageWidth)/\(scrollView.contentSize.width). offset.x: \(scrollView.contentOffset.x)")
     }
 }

@@ -113,5 +113,38 @@
             </objects>
             <point key="canvasLocation" x="621" y="316"/>
         </scene>
+        <!--Second View Controller-->
+        <scene sceneID="Kck-Qf-ZKw">
+            <objects>
+                <viewController storyboardIdentifier="SecondViewController" id="Aqc-RV-9Z6" customClass="SecondViewController" customModule="TutorialSteps" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yti-uC-aDc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Onp-Q1-tJp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="du2-mh-gEL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_3" translatesAutoresizingMaskIntoConstraints="NO" id="HSz-am-Ixf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HSz-am-Ixf" secondAttribute="trailing" id="4dv-hC-2Ha"/>
+                            <constraint firstItem="HSz-am-Ixf" firstAttribute="leading" secondItem="du2-mh-gEL" secondAttribute="leading" id="9JD-Yo-b6z"/>
+                            <constraint firstItem="HSz-am-Ixf" firstAttribute="top" secondItem="Yti-uC-aDc" secondAttribute="bottom" constant="-20" id="D1h-cg-zus"/>
+                            <constraint firstItem="Onp-Q1-tJp" firstAttribute="top" secondItem="HSz-am-Ixf" secondAttribute="bottom" id="yvV-Oo-1w0"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0s-Eq-37V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="316"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="bg_3" width="320" height="568"/>
+    </resources>
 </document>
